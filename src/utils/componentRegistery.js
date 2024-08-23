@@ -2,8 +2,6 @@ import Info from "../components/info/info";
 import Pagination from "../components/pagination/Pagination";
 import Length from "../components/length/length";
 import Search from "../components/search/search";
-import { useContext } from "react";
-import { dearContext } from "../dearReactTable";
 import debugLog from "./debugLog";
 
 function componentRegistery({ dearTableLayout }) {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Select from "./select";
-import { dearContext } from "../../dearReactTable";
 import debugLog from "../../utils/debugLog";
+import dearContext from "../../utils/context";
 
 function Length() {
   //

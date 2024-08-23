@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { dearContext } from "../../dearReactTable";
+import dearContext from "../../utils/context";
 
 function TableCol({ column }) {
   //

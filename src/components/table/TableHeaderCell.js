@@ -1,8 +1,8 @@
 import React,{ useContext, useMemo } from "react";
-import { dearContext } from "../../dearReactTable";
 import { UpArrow, DownArrow } from "../../assets/svg";
 import debugLog from "../../utils/debugLog";
 import activeArrow from "../../utils/activeArrow";
+import dearContext from "../../utils/context";
 
 function TableHeaderCell({ column }) {
   //

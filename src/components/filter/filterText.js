@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef } from "react";
-import { dearContext } from "../../dearReactTable";
+import dearContext from "../../utils/context";
 
 function FilterText({ column, handleChange }) {
   //

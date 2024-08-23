@@ -1,6 +1,6 @@
-.vscode
-node_modules
-src
-babel.config.json
-rollup.config.js
-.gitignore
+# .vscode
+# node_modules
+# src
+# babel.config.json
+# rollup.config.js
+# .gitignore

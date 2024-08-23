@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { dearContext } from "../../dearReactTable";
 import FilterSelect from "./filterSelect";
 import debugLog from "../../utils/debugLog";
 import FilterText from "./filterText";
+import dearContext from "../../utils/context";
 
 function Filter() {
   //

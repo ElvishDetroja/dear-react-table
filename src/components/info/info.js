@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { dearContext } from "../../dearReactTable";
 import debugLog from "../../utils/debugLog";
 import { informing } from "../../utils/informing";
+import dearContext from "../../utils/context";
 
 function Info() {
   //

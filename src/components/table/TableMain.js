@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { dearContext } from "../../dearReactTable";
 import useClickOutside from "../../hooks/useClickOutside";
 import { removeClick } from "../../utils/rowClick";
 import TableCol from "./TableCol";
@@ -8,6 +7,7 @@ import Filter from "../filter/filter";
 import TableRow from "./TableRow";
 import Loading from "../loader/loader";
 import ErrorMessage from "../error/ErrorMessage";
+import dearContext from "../../utils/context";
 
 function TableMain() {
   //

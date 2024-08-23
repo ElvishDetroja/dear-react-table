@@ -1,6 +1,6 @@
+import dearContext from "../../utils/context";
 import debugLog from "../../utils/debugLog";
 import React, { useContext, useEffect, useRef } from "react";
-import { dearContext } from "../../dearReactTable";
 
 function Search() {
   //

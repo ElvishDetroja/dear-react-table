@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { dearContext } from "../../dearReactTable";
 import debugLog from "../../utils/debugLog";
 import TableBottom from "./TableBottom";
 import TableTop from "./TableTop";
 import TableMain from "./TableMain";
+import dearContext from "../../utils/context";
 
 function DearTable() {
   //

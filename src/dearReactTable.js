@@ -1,13 +1,12 @@
 import React, { useEffect, useMemo, useRef } from "react";
 import DearTable from "./components/table/dearTable";
-import { useState, createContext } from "react";
+import { useState } from "react";
 import { executeClientSideLogic } from "./utils/executeClientSideLogic";
 import debugLog from "./utils/debugLog";
 import useEffectAfterMount from "./hooks/useEffectAfterMount";
 import { ensureCombine } from "./configure/ensureDefaultValues";
 import { request, newDataInDearTableData } from "./utils/request";
-
-const dearContext = createContext();
+import dearContext from "./utils/context";
 
 function DearReactTable({
   dearTableConfig: tableConfig = {},
@@ -93,4 +92,3 @@ function DearReactTable({
 }
 
 export default DearReactTable;
-export { dearContext };

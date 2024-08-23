@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { dearContext } from "../../dearReactTable";
 import { paging } from "../../utils/paging";
 import debugLog from "../../utils/debugLog";
+import dearContext from "../../utils/context";
 
 function Pagination() {
   //

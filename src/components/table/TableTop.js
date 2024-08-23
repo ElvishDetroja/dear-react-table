@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from "react";
-import { dearContext } from "../../dearReactTable";
 import componentRegistery from "../../utils/componentRegistery";
+import dearContext from "../../utils/context";
 
 function TableTop() {
   const { dearTableLayout } = useContext(dearContext);
