@@ -1,5 +1,6 @@
 function sorting({ dearTableConfig, dearTableData }) {
   //
+
   const order = dearTableConfig?.order?.[0] || [];
 
   if (order.length == 0) return dearTableData;
@@ -10,7 +11,7 @@ function sorting({ dearTableConfig, dearTableData }) {
     if (typeof value == "string") {
       value = value.toUpperCase();
     }
-   
+
     if (!value) {
       value = "";
     }

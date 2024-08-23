@@ -23,16 +23,15 @@ function DearReactTable({
     frameworkTableData,
     defaultTableLayout,
     defaultTableStyle,
-  } = useMemo(
-    () =>
-      ensureCombine({
-        tableConfig,
-        tableData,
-        tableLayout,
-        tableStyle,
-      }),
-    [tableConfig, tableData, tableLayout, tableStyle]
-  );
+  } = useMemo(() => {
+    debugLog("dearReactTable: useMemo run");
+    return ensureCombine({
+      tableConfig,
+      tableData,
+      tableLayout,
+      tableStyle,
+    });
+  }, [tableConfig, tableData, tableLayout, tableStyle]);
 
   const [dearTableConfig, setDearTableConfig] = useState(defaultTableConfig);
   const [dearTableData, setDearTableData] = useState(frameworkTableData);

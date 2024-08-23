@@ -54,6 +54,7 @@ function ensureDefaultData({ tableData, dearTableData = {} }) {
 
 function dataFramework({ defaultTableConfig, defaultTableData }) {
   //
+  debugLog("ensureDefaultValues: dataFramework run");
   if (defaultTableConfig.serverSide) {
     defaultTableData = { ...defaultTableData, forebay: defaultTableData.data };
   } else {
