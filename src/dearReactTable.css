@@ -1,0 +1,480 @@
+.dear-table-parent-container * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont;
+}
+
+.dear-table-parent-container {
+  --borderRadius: 5px;
+  --maxHeightForScrollY: 300px;
+}
+
+.dear-table-parent-container {
+  --parentBGColor: white;
+  --fontColor: #333;
+
+  --evenRowColor: white;
+  --oddRowColor: #f9fafb;
+  --rowHoverColor: #e6e7e8;
+  --rowBorderColor: #d6d9e0;
+
+  --selectedRowColor: #0d6efd;
+  --selectedRowHoverColor: #0d6dfcd1;
+  --selectedRowFontColor: white;
+
+  --arrowDefaultColor: #dfdfdf;
+  --arrowActiveColor: #666666;
+
+  --paginationActiveColor: #e6e7e8;
+  --paginationHoverColor: #f9fafb;
+  --paginationBorderColor: #d6d9e0;
+
+  --orderOddRowColor: #f1f1f1;
+  --orderEvenRowColor: #fafafa;
+
+  --columnTitleBGColor: white;
+
+  --searchAndLengthBGColor: #f9fafb;
+  --searchAndLengthBorderColor: #e6e7e8;
+  --searchAndLengthFocusBorderColor: #0d6efd;
+
+  --loadingPrimaryColor: #0d6efd;
+  --loadingSecondaryColor: #e6e7e8;
+
+  --scrollbarColor: #c0b8b8;
+  --scrollbarHoverColor: #817f7f;
+}
+
+.dear-table-parent-container.dark-theme {
+  --parentBGColor: #212529;
+  --fontColor: #dae0e7;
+
+  --evenRowColor: #212529;
+  --oddRowColor: #262a2e;
+  --rowHoverColor: #292d31;
+  --rowBorderColor: #404346;
+
+  --selectedRowHoverColor: #0d6efd;
+  --selectedRowColor: #0d6dfcd1;
+  --selectedRowFontColor: white;
+
+  --arrowActiveColor: #dfdfdf;
+  --arrowDefaultColor: #666666;
+
+  --paginationHoverColor: #262a2e;
+  --paginationActiveColor: #424549;
+  --paginationBorderColor: #404346;
+
+  --orderOddRowColor: #2d3135;
+  --orderEvenRowColor: #25292d;
+
+  --columnTitleBGColor: #212529;
+
+  --searchAndLengthBGColor: #262a2e;
+  --searchAndLengthBorderColor: #424549;
+  --searchAndLengthFocusBorderColor: #dae0e7;
+
+  --loadingPrimaryColor: #0d6efd;
+  --loadingSecondaryColor: #e6e7e8;
+
+  --scrollbarColor: #dfdfdf;
+  --scrollbarHoverColor: #c0cedf;
+}
+
+/* @@@ */
+
+.dear-table-parent-container {
+  background-color: var(--parentBGColor);
+  color: var(--fontColor);
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.dear-table-top-container,
+.dear-table-bottom-container {
+  display: flex;
+  padding: 18px 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* @@@ */
+/* table */
+
+.dear-table-wrapper {
+  position: relative; /* for loading */
+}
+
+.dear-table-wrapper.scroll-x {
+  overflow-x: auto;
+}
+
+.dear-table-wrapper.scroll-y {
+  overflow-y: auto;
+  max-height: var(--maxHeightForScrollY);
+}
+
+.dear-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.dear-table.border {
+  border: 1px solid var(--rowBorderColor);
+}
+
+/* @@@ */
+
+.dear-table thead {
+  background-color: var(--columnTitleBGColor);
+}
+
+.dear-table thead tr:first-child th {
+  cursor: default;
+  padding: 10px 5px;
+}
+
+.dear-table thead.border-x.border-y tr:first-child th {
+  border: 1px solid var(--rowBorderColor);
+}
+
+.dear-table thead.border-x.border-y tr:not(:first-child) th {
+  border: 1px solid var(--rowBorderColor);
+  border-width: 1px 0px;
+}
+
+.dear-table thead.border-x:not(.border-y) tr th {
+  border: 1px solid var(--rowBorderColor);
+  border-width: 1px 0px;
+}
+
+.dear-table thead.border-y:not(.border-x) tr th {
+  border: 1px solid var(--rowBorderColor);
+  border-width: 0px 1px;
+}
+
+.dear-table thead .dear-table-header-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dear-table thead tr:first-child th.sorting {
+  cursor: pointer;
+}
+
+.dear-table-wrapper.scroll-y .dear-table thead {
+  position: sticky;
+  top: 0;
+}
+
+/* @@@ */
+
+.dear-table .dear-arrow-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2px 5px;
+}
+
+.dear-table .dear-arrow-container .arrow {
+  padding: 0.5px 0.5px;
+}
+.dear-table .dear-arrow-container .arrow path {
+  fill: var(--arrowDefaultColor);
+}
+
+.dear-table .dear-arrow-container .arrow.active path {
+  fill: var(--arrowActiveColor);
+}
+
+/* @@@ */
+
+.dear-table tbody {
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.dear-table tbody tr {
+  transition: all 0.1s ease;
+}
+
+.dear-table tbody tr:nth-child(odd) {
+  background-color: var(--oddRowColor);
+}
+
+.dear-table tbody tr:nth-child(even) {
+  background-color: var(--evenRowColor);
+}
+
+.dear-table tbody.hover tr:hover {
+  background-color: var(--rowHoverColor);
+}
+
+.dear-table tbody tr.clicked {
+  background-color: var(--selectedRowColor);
+  color: var(--selectedRowFontColor);
+}
+
+.dear-table tbody.hover tr.clicked:hover {
+  background-color: var(--selectedRowHoverColor);
+}
+
+.dear-table tbody.border-x:not(.border-y) tr td {
+  border: 1px solid var(--rowBorderColor);
+  border-width: 1px 0px;
+}
+
+.dear-table tbody.border-y:not(.border-x) tr td {
+  border: 1px solid var(--rowBorderColor);
+  border-width: 0px 1px;
+}
+
+.dear-table tbody.border-x.border-y tr td {
+  border: 1px solid var(--rowBorderColor);
+}
+
+/* @@@ */
+
+.dear-table tbody td {
+  padding: 10px 5px;
+}
+
+.dear-table tbody.border-cell td {
+  border: 1px solid var(--rowBorderColor);
+  border-width: 0px 1px;
+}
+
+.dear-table tbody tr:nth-child(odd):not(.clicked):not(:hover) td.order {
+  background-color: var(--orderOddRowColor);
+}
+.dear-table tbody tr:nth-child(even):not(.clicked):not(:hover) td.order {
+  background-color: var(--orderEvenRowColor);
+}
+
+/* @@@ */
+
+.dear-table .dear-table-filter th {
+  padding: 10px 5px;
+}
+
+/* @@@ */
+/* pagination */
+
+.dear-pagination-container {
+  display: flex;
+}
+
+.dear-page-box {
+  transition: all 0.1s ease;
+  border: 1px solid var(--paginationBorderColor);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.dear-page-box.number {
+  cursor: pointer;
+}
+
+.dear-page-box:hover {
+  background-color: var(--paginationHoverColor);
+}
+
+.dear-page-box:first-child {
+  border-top-left-radius: var(--borderRadius);
+  border-bottom-left-radius: var(--borderRadius);
+}
+
+.dear-page-box:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.dear-page-box.active {
+  background-color: var(--paginationActiveColor);
+}
+
+/* @@@ */
+/* search */
+
+.dear-input-search-container {
+  display: flex;
+  align-items: center;
+}
+
+.dear-input-search-container input {
+  box-shadow: none;
+  outline: none;
+  border: none;
+  transition: all 0.1s ease;
+  padding: 5px;
+  border-radius: var(--borderRadius);
+  border: 2px solid var(--searchAndLengthBorderColor);
+  margin-left: 5px;
+  background-color: var(--searchAndLengthBGColor);
+}
+
+.dear-input-search-container input:focus {
+  border-color: var(--searchAndLengthFocusBorderColor);
+}
+
+/* @@@ */
+/* length */
+
+.dear-input-select-container {
+  display: flex;
+  align-items: center;
+}
+
+.dear-input-select-container select {
+  outline: none;
+  padding: 5px;
+  margin-right: 5px;
+  border-radius: var(--borderRadius);
+  border: 2px solid var(--searchAndLengthBorderColor);
+  transition: all 0.1s ease;
+  background-color: var(--searchAndLengthBGColor);
+}
+
+.dear-input-select-container select:focus {
+  border-color: var(--searchAndLengthFocusBorderColor);
+}
+
+/* @@@ */
+/* filter */
+
+.dear-table-filter input[type="text"] {
+  box-shadow: none;
+  outline: none;
+  border: none;
+  transition: all 0.1s ease;
+  border-radius: var(--borderRadius);
+  border: 2px solid var(--searchAndLengthBorderColor);
+  background-color: var(--searchAndLengthBGColor);
+  padding: 3px;
+}
+
+.dear-table-filter input[type="text"]:focus {
+  border-color: var(--searchAndLengthFocusBorderColor);
+}
+
+.dear-table-filter select {
+  outline: none;
+  border-radius: var(--borderRadius);
+  border: 2px solid var(--searchAndLengthBorderColor);
+  transition: all 0.1s ease;
+  background-color: var(--searchAndLengthBGColor);
+  padding: 2px;
+}
+
+.dear-table-filter select:focus {
+  border-color: var(--searchAndLengthFocusBorderColor);
+}
+
+/* @@@ */
+/* dark-theme */
+
+.dear-table-parent-container .dear-input-search-container input,
+.dear-table-parent-container .dear-input-select-container select,
+.dear-table-parent-container .dear-table-filter input,
+.dear-table-parent-container .dear-table-filter select {
+  color: var(--fontColor);
+}
+
+.dear-table-parent-container.dark-theme .dear-input-search-container input,
+.dear-table-parent-container.dark-theme .dear-input-select-container select,
+.dear-table-parent-container.dark-theme .dear-table-filter input,
+.dear-table-parent-container.dark-theme .dear-table-filter select {
+  color: var(--fontColor);
+}
+
+/* @@@ */
+/* loader */
+
+.dear-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.dear-loader-container.full-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dear-loader {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+}
+@keyframes l5 {
+  0% {
+    box-shadow: 20px 0 var(--loadingPrimaryColor),
+      -20px 0 var(--loadingSecondaryColor);
+    background: var(--loadingPrimaryColor);
+  }
+  33% {
+    box-shadow: 20px 0 var(--loadingPrimaryColor),
+      -20px 0 var(--loadingSecondaryColor);
+    background: var(--loadingSecondaryColor);
+  }
+  66% {
+    box-shadow: 20px 0 var(--loadingSecondaryColor),
+      -20px 0 var(--loadingPrimaryColor);
+    background: var(--loadingSecondaryColor);
+  }
+  100% {
+    box-shadow: 20px 0 var(--loadingSecondaryColor),
+      -20px 0 var(--loadingPrimaryColor);
+    background: var(--loadingPrimaryColor);
+  }
+}
+
+/* @@@ */
+/* error */
+
+.dear-error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+/* @@@ */
+/* scrollbar */
+
+/* Customize the scrollbar track (background) */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Customize the scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarColor);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbarHoverColor);
+}
+
+::-webkit-scrollbar {
+  width: 5px; /* For vertical scrollbars */
+  height: 5px; /* For horizontal scrollbars */
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+  width: 0;
+  height: 0;
+}
