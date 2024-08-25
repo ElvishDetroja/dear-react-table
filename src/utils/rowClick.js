@@ -1,10 +1,10 @@
-import debugLog from "./debugLog";
+import debug from "./debug";
 
 function removeClick({ setDearTableData, dearTableLayout }) {
   //
-  debugLog("removeClick run");
+  debug.log("removeClick run");
   if (dearTableLayout.tbody.allowRowSelection) {
-    debugLog("removeClick truely run");
+    debug.info("removeClick truely run");
     setDearTableData((pre) => {
       const index = pre.forebay.findIndex((dat) => dat.click);
 
@@ -24,13 +24,13 @@ function removeClick({ setDearTableData, dearTableLayout }) {
 
 function addClick({ index, dearTableData, setDearTableData, dearTableLayout }) {
   //
-  debugLog("addClick run");
+  debug.log("addClick run");
   if (
     dearTableLayout.tbody.allowRowSelection ||
     dearTableLayout.tbody.allowMultipleRowSelection
   ) {
     //
-    debugLog("addClick truely run");
+    debug.info("addClick truely run");
 
     const copiedForebay = [...dearTableData.forebay];
 

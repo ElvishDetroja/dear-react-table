@@ -2,10 +2,10 @@ import React, { useEffect, useMemo, useRef } from "react";
 import DearTable from "./components/table/dearTable";
 import { useState } from "react";
 import { executeClientSideLogic } from "./utils/executeClientSideLogic";
-import debugLog from "./utils/debugLog";
+import debug from "./utils/debug";
 import useEffectAfterMount from "./hooks/useEffectAfterMount";
-import { ensureCombine } from "./configure/ensureDefaultValues";
-import { request, newDataInDearTableData } from "./utils/request";
+import { ensureCombine, newDataInDearTableData } from "./configure/ensureDefaultValues";
+import { request } from "./utils/request";
 import dearContext from "./utils/context";
 
 function DearReactTable({
@@ -18,20 +18,22 @@ function DearReactTable({
   dearComponentsProps,
 }) {
   //
+  debug.log("@@@@@@@@@@@@@");
+
   const {
     defaultTableConfig,
     frameworkTableData,
     defaultTableLayout,
     defaultTableStyle,
   } = useMemo(() => {
-    debugLog("dearReactTable: useMemo run");
+    debug.log("dearReactTable: useMemo run");
     return ensureCombine({
       tableConfig,
       tableData,
       tableLayout,
       tableStyle,
     });
-  }, [tableConfig, tableData, tableLayout, tableStyle]);
+  }, []);
 
   const [dearTableConfig, setDearTableConfig] = useState(defaultTableConfig);
   const [dearTableData, setDearTableData] = useState(frameworkTableData);
@@ -40,11 +42,11 @@ function DearReactTable({
 
   const statusRef = useRef({ firstRender: true, dataUpdated: false });
 
-  debugLog("dearReactTable: dearTableConfig", dearTableConfig);
-  debugLog("dearReactTable: dearTableData", dearTableData);
-  debugLog("dearReactTable: dearTableLayout", dearTableLayout);
-  debugLog("dearReactTable: statusRef", statusRef);
-  debugLog("dearReactTable: dearTableStyle", dearTableStyle);
+  debug.log("dearReactTable: dearTableConfig", dearTableConfig);
+  debug.log("dearReactTable: dearTableData", dearTableData);
+  debug.log("dearReactTable: statusRef", statusRef);
+  debug.info("dearReactTable: dearTableLayout", dearTableLayout);
+  debug.info("dearReactTable: dearTableStyle", dearTableStyle);
 
   const contextValue = {
     dearTableConfig,
@@ -60,21 +62,21 @@ function DearReactTable({
   };
 
   useEffectAfterMount(() => {
-    debugLog("dearReactTable: tableData useEffect", tableData);
+    debug.log("dearReactTable: tableData useEffect", tableData);
     newDataInDearTableData({ newData: tableData, contextValue });
   }, [tableData]);
 
   useEffect(() => {
-    debugLog("dearReactTable: dearTableData useEffect outside", dearTableData);
+    debug.log("dearReactTable: dearTableData useEffect outside", dearTableData);
 
     if (!dearTableConfig.serverSide && statusRef.current.dataUpdated) {
-      debugLog("dearReactTable: dearTableData useEffect inside");
+      debug.log("dearReactTable: dearTableData useEffect inside");
       executeClientSideLogic(contextValue);
     }
   }, [dearTableData]);
 
   useEffect(() => {
-    debugLog("dearReactTable: dearTableConfig useEffect", dearTableConfig);
+    debug.log("dearReactTable: dearTableConfig useEffect", dearTableConfig);
 
     if (statusRef.current.firstRender || dearTableConfig.serverSide) {
       request(contextValue);

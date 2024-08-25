@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import debugLog from "../../utils/debugLog";
+import debug from "../../utils/debug";
 import { addClick } from "../../utils/rowClick";
 import dearContext from "../../utils/context";
 
 function TableRow({ row, index }) {
   //
-  debugLog("TableRow Run");
+  debug.info("TableRow Run");
   const {
     dearTableConfig,
     dearTableData,

@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import FilterSelect from "./filterSelect";
-import debugLog from "../../utils/debugLog";
+import debug from "../../utils/debug";
 import FilterText from "./filterText";
 import dearContext from "../../utils/context";
 
 function Filter() {
   //
-  debugLog("Filter Run");
+  debug.info("Filter Run");
 
   const { dearTableConfig, setDearTableConfig } = useContext(dearContext);
 
@@ -33,14 +33,14 @@ function Filter() {
         {dearTableConfig.columns.map((column) => (
           <th key={column.key}>
             {column.filter && (
-              <>
+              <div className="dear-table-header-filter">
                 {column.filter.type == "select" && (
                   <FilterSelect column={column} handleChange={handleChange} />
                 )}
                 {column.filter.type == "text" && (
                   <FilterText column={column} handleChange={handleChange} />
                 )}
-              </>
+              </div>
             )}
           </th>
         ))}

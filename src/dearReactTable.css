@@ -126,6 +126,7 @@
 }
 
 /* @@@ */
+/* thead */
 
 .dear-table thead {
   background-color: var(--columnTitleBGColor);
@@ -136,11 +137,21 @@
   padding: 10px 5px;
 }
 
-.dear-table thead.border-x.border-y tr:first-child th {
+.dear-table thead.border-x.border-y.border-y-filter tr th {
   border: 1px solid var(--rowBorderColor);
 }
 
-.dear-table thead.border-x.border-y tr:not(:first-child) th {
+.dear-table
+  thead.border-x.border-y:not(.border-y-filter)
+  tr:not(.dear-table-filter)
+  th {
+  border: 1px solid var(--rowBorderColor);
+}
+
+.dear-table
+  thead.border-x.border-y:not(.border-y-filter)
+  tr.dear-table-filter
+  th {
   border: 1px solid var(--rowBorderColor);
   border-width: 1px 0px;
 }
@@ -155,12 +166,6 @@
   border-width: 0px 1px;
 }
 
-.dear-table thead .dear-table-header-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .dear-table thead tr:first-child th.sorting {
   cursor: pointer;
 }
@@ -168,6 +173,55 @@
 .dear-table-wrapper.scroll-y .dear-table thead {
   position: sticky;
   top: 0;
+}
+
+/* @@@ */
+
+.dear-table thead .dear-table-header-cell {
+  display: flex;
+  align-items: center;
+}
+
+.dear-table thead.jc-center .dear-table-header-cell {
+  justify-content: center;
+}
+
+.dear-table thead.jc-flex-start .dear-table-header-cell {
+  justify-content: flex-start;
+}
+
+.dear-table thead.jc-flex-end .dear-table-header-cell {
+  justify-content: flex-end;
+}
+
+.dear-table thead.jc-space-between .dear-table-header-cell {
+  justify-content: space-between;
+}
+
+/* @@@ */
+
+.dear-table .dear-table-filter th {
+  padding: 10px 5px;
+}
+
+.dear-table thead .dear-table-header-filter {
+  display: flex;
+}
+
+.dear-table thead.jc-center .dear-table-header-filter {
+  justify-content: center;
+}
+
+.dear-table thead.jc-flex-start .dear-table-header-filter {
+  justify-content: flex-start;
+}
+
+.dear-table thead.jc-flex-end .dear-table-header-filter {
+  justify-content: flex-end;
+}
+
+.dear-table thead.jc-space-between .dear-table-header-filter {
+  justify-content: space-between;
 }
 
 /* @@@ */
@@ -190,6 +244,7 @@
 }
 
 /* @@@ */
+/* tbody */
 
 .dear-table tbody {
   max-height: 100px;
@@ -253,10 +308,16 @@
   background-color: var(--orderEvenRowColor);
 }
 
-/* @@@ */
+.dear-table tbody.ta-left tr td {
+  text-align: left;
+}
 
-.dear-table .dear-table-filter th {
-  padding: 10px 5px;
+.dear-table tbody.ta-right tr td {
+  text-align: right;
+}
+
+.dear-table tbody.ta-center tr td {
+  text-align: center;
 }
 
 /* @@@ */
@@ -453,27 +514,27 @@
 /* scrollbar */
 
 /* Customize the scrollbar track (background) */
-::-webkit-scrollbar-track {
+.dear-table-parent-container ::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
 /* Customize the scrollbar thumb (the draggable part) */
-::-webkit-scrollbar-thumb {
+.dear-table-parent-container ::-webkit-scrollbar-thumb {
   background-color: var(--scrollbarColor);
   border-radius: 10px;
   transition: all 0.2s ease;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.dear-table-parent-container ::-webkit-scrollbar-thumb:hover {
   background-color: var(--scrollbarHoverColor);
 }
 
-::-webkit-scrollbar {
+.dear-table-parent-container ::-webkit-scrollbar {
   width: 5px; /* For vertical scrollbars */
   height: 5px; /* For horizontal scrollbars */
 }
 
-::-webkit-scrollbar-corner {
+.dear-table-parent-container ::-webkit-scrollbar-corner {
   background: transparent;
   width: 0;
   height: 0;

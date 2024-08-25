@@ -32,9 +32,11 @@ function TableMain() {
         ))}
       </colgroup>
       <thead
-        className={`${
-          dearTableLayout.thead.borderX ? "border-x" : ""
-        } ${dearTableLayout.thead.borderY ? "border-y" : ""}`}
+        className={`${dearTableLayout.thead.borderX ? "border-x" : ""} ${
+          dearTableLayout.thead.borderY ? "border-y" : ""
+        } ${
+          dearTableLayout.thead.borderYForFilter ? "border-y-filter" : ""
+        } jc-${dearTableLayout.thead.justifyContent}`}
       >
         <tr>
           {dearTableConfig.columns.map((column, colIndex) => (
@@ -45,11 +47,11 @@ function TableMain() {
       </thead>
       <tbody
         ref={tbodyBlock}
-        className={`
-          ${dearTableLayout.tbody.enableRowHover ? "hover" : ""}
-          ${dearTableLayout.tbody.borderX ? "border-x" : ""}
-          ${dearTableLayout.tbody.borderY ? "border-y" : ""}
-        `.trim()}
+        className={`${dearTableLayout.tbody.enableRowHover ? "hover" : ""} ${
+          dearTableLayout.tbody.borderX ? "border-x" : ""
+        } ${dearTableLayout.tbody.borderY ? "border-y" : ""} ta-${
+          dearTableLayout.tbody.textAlign
+        }`.trim()}
       >
         {dearTableData.forebay?.length > 0 &&
           dearTableData.forebay.map((row, rowIndex) => (

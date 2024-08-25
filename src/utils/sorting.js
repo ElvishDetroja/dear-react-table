@@ -1,6 +1,5 @@
 function sorting({ dearTableConfig, dearTableData }) {
   //
-
   const order = dearTableConfig?.order?.[0] || [];
 
   if (order.length == 0) return dearTableData;

@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import { paging } from "../../utils/paging";
-import debugLog from "../../utils/debugLog";
+import debug from "../../utils/debug";
 import dearContext from "../../utils/context";
 
 function Pagination() {
   //
-  debugLog("Pagination Run");
+  debug.info("Pagination Run");
 
   const { dearTableConfig, dearTableData, setDearTableConfig } =
     useContext(dearContext);
 
   const pages = paging({ dearTableConfig, dearTableData });
 
-  debugLog("Pagination: pages", pages);
+  debug.info("Pagination: pages", pages);
 
   function handlePaging(page) {
     setDearTableConfig((pre) => {

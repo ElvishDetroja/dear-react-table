@@ -1,9 +1,9 @@
-import { ensureCombine } from "../configure/ensureDefaultValues";
-import debugLog from "./debugLog";
+import { ensureCombine, newDataInDearTableData } from "../configure/ensureDefaultValues";
+import debug from "./debug";
 
 async function request(contextValue) {
   //
-  debugLog("request sent");
+  debug.log("request sent");
 
   const { dearTableConfig, setDearTableData, dearTableCallback, statusRef } =
     contextValue;
@@ -22,24 +22,5 @@ async function request(contextValue) {
   }
 }
 
-function newDataInDearTableData({ newData, contextValue }) {
-  //
-  debugLog("newDataInDearTableData run", newData);
 
-  const { dearTableData, setDearTableData, statusRef, dearTableConfig } =
-    contextValue;
-
-  const { frameworkTableData } = ensureCombine({
-    tableConfig: dearTableConfig,
-    tableData: newData,
-    dearTableData: dearTableData,
-  });
-
-  debugLog("request: set frameworkTableData", frameworkTableData);
-
-  setDearTableData({ ...frameworkTableData, loading: false });
-
-  statusRef.current = { ...statusRef.current, dataUpdated: true };
-}
-
-export { request, newDataInDearTableData };
+export { request };

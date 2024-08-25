@@ -1,12 +1,12 @@
 import React,{ useContext, useMemo } from "react";
 import { UpArrow, DownArrow } from "../../assets/svg";
-import debugLog from "../../utils/debugLog";
+import debug from "../../utils/debug";
 import activeArrow from "../../utils/activeArrow";
 import dearContext from "../../utils/context";
 
 function TableHeaderCell({ column }) {
   //
-  debugLog("TableHeaderCell Run");
+  debug.info("TableHeaderCell Run");
   const { dearTableConfig, setDearTableConfig } = useContext(dearContext);
 
   function handleSorting() {

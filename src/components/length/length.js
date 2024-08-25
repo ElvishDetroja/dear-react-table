@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import Select from "./select";
-import debugLog from "../../utils/debugLog";
+import debug from "../../utils/debug";
 import dearContext from "../../utils/context";
 
 function Length() {
   //
-  debugLog("Length Run");
+  debug.info("Length Run");
   const { dearTableConfig, setDearTableConfig } = useContext(dearContext);
 
   function handleChange(length) {

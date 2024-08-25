@@ -1,10 +1,10 @@
 import dearContext from "../../utils/context";
-import debugLog from "../../utils/debugLog";
+import debug from "../../utils/debug";
 import React, { useContext, useEffect, useRef } from "react";
 
 function Search() {
   //
-  debugLog("Search Run");
+  debug.info("Search Run");
   const { dearTableConfig, setDearTableConfig } = useContext(dearContext);
 
   const debounceRef = useRef(null);
