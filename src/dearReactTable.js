@@ -4,7 +4,8 @@ import { useState } from "react";
 import { executeClientSideLogic } from "./utils/executeClientSideLogic";
 import debug from "./utils/debug";
 import useEffectAfterMount from "./hooks/useEffectAfterMount";
-import { ensureCombine, newDataInDearTableData } from "./configure/ensureDefaultValues";
+import { formattingCombine } from "./configure/dataFormatting";
+import { newDataInDearTableData } from "./configure/dataOperation";
 import { request } from "./utils/request";
 import dearContext from "./utils/context";
 
@@ -18,27 +19,27 @@ function DearReactTable({
   dearComponentsProps,
 }) {
   //
-  debug.log("@@@@@@@@@@@@@");
+  debug.log("@@@@@@@@@@@@@@@@@");
 
   const {
-    defaultTableConfig,
-    frameworkTableData,
-    defaultTableLayout,
-    defaultTableStyle,
+    processedConfig,
+    frameworkData,
+    processedLayout,
+    processedStyle,
   } = useMemo(() => {
     debug.log("dearReactTable: useMemo run");
-    return ensureCombine({
-      tableConfig,
-      tableData,
-      tableLayout,
-      tableStyle,
+    return formattingCombine({
+      unprocessedConfig: tableConfig,
+      unprocessedData: tableData,
+      unprocessedLayout: tableLayout,
+      unprocessedStyle: tableStyle,
     });
   }, []);
 
-  const [dearTableConfig, setDearTableConfig] = useState(defaultTableConfig);
-  const [dearTableData, setDearTableData] = useState(frameworkTableData);
-  const [dearTableLayout, setDearTableLayout] = useState(defaultTableLayout);
-  const [dearTableStyle, setDearTableStyle] = useState(defaultTableStyle);
+  const [dearTableConfig, setDearTableConfig] = useState(processedConfig);
+  const [dearTableData, setDearTableData] = useState(frameworkData);
+  const [dearTableLayout, setDearTableLayout] = useState(processedLayout);
+  const [dearTableStyle, setDearTableStyle] = useState(processedStyle);
 
   const statusRef = useRef({ firstRender: true, dataUpdated: false });
 

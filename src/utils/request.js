@@ -1,4 +1,4 @@
-import { ensureCombine, newDataInDearTableData } from "../configure/ensureDefaultValues";
+import { newDataInDearTableData } from "../configure/dataOperation";
 import debug from "./debug";
 
 async function request(contextValue) {
@@ -21,6 +21,5 @@ async function request(contextValue) {
     newDataInDearTableData({ newData: resData, contextValue });
   }
 }
-
 
 export { request };

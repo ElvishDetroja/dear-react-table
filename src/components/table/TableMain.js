@@ -14,12 +14,8 @@ function TableMain() {
   const { dearTableConfig, dearTableData, setDearTableData, dearTableLayout } =
     useContext(dearContext);
 
-  const primaryKey = dearTableConfig.columns.find(
-    (column) => column.primaryKey
-  )?.key;
-
   const tbodyBlock = useClickOutside(() =>
-    removeClick({ setDearTableData, dearTableLayout })
+    removeClick({ dearTableData, setDearTableData, dearTableLayout })
   );
 
   return (
@@ -56,7 +52,7 @@ function TableMain() {
         {dearTableData.forebay?.length > 0 &&
           dearTableData.forebay.map((row, rowIndex) => (
             <TableRow
-              key={row[primaryKey] ?? rowIndex}
+              key={row.dearId ?? rowIndex}
               row={row}
               index={rowIndex}
             />

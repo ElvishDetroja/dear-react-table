@@ -1,28 +1,52 @@
 import debug from "./debug";
 
-function removeClick({ setDearTableData, dearTableLayout }) {
+function removeClick({ dearTableData, setDearTableData, dearTableLayout }) {
   //
   debug.log("removeClick run");
+
   if (dearTableLayout.tbody.allowRowSelection) {
+    //
     debug.info("removeClick truely run");
+
+    const index = dearTableData.forebay.findIndex((dat) => dat.click);
+    if (index == -1) return;
+
+    const dearId = dearTableData.forebay[index].dearId;
+
+    const updatedForebay = [...dearTableData.forebay];
+
+    updatedForebay.splice(index, 1, {
+      ...updatedForebay[index],
+      click: false,
+    });
+
+    const updatedReservoir = [...dearTableData.reservoir];
+    const idx = updatedReservoir.findIndex((dat) => dat.dearId == dearId);
+    console.log(
+      "updatedReservoirupdatedReservoirupdatedReservoir",
+      updatedReservoir
+    );
+    console.log("DF", idx);
+    updatedReservoir[idx].click = false;
+
     setDearTableData((pre) => {
-      const index = pre.forebay.findIndex((dat) => dat.click);
-
-      if (index == -1) return pre;
-
-      const updatedData = [...pre.forebay];
-
-      updatedData.splice(index, 1, {
-        ...updatedData[index],
-        click: false,
-      });
-
-      return { ...pre, forebay: updatedData };
+      return {
+        ...pre,
+        forebay: updatedForebay,
+        reservoir: updatedReservoir,
+      };
     });
   }
 }
 
-function addClick({ index, dearTableData, setDearTableData, dearTableLayout }) {
+function addClick({
+  row,
+  index,
+  dearTableConfig,
+  dearTableData,
+  setDearTableData,
+  dearTableLayout,
+}) {
   //
   debug.log("addClick run");
   if (
@@ -49,9 +73,25 @@ function addClick({ index, dearTableData, setDearTableData, dearTableLayout }) {
       click: !oldClick,
     });
 
-    setDearTableData((pre) => {
-      return { ...pre, forebay: copiedForebay };
-    });
+    if (!dearTableConfig.serverSide) {
+      const copiedReservoir = [...dearTableData.reservoir];
+      const findIdx = copiedReservoir.findIndex(
+        (dat) => dat.dearId == row.dearId
+      );
+
+      copiedReservoir[findIdx] = {
+        ...copiedReservoir[findIdx],
+        click: !oldClick,
+      };
+
+      setDearTableData((pre) => {
+        return { ...pre, forebay: copiedForebay, reservoir: copiedReservoir };
+      });
+    } else {
+      setDearTableData((pre) => {
+        return { ...pre, forebay: copiedForebay };
+      });
+    }
   }
 }
 

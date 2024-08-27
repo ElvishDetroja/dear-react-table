@@ -1,7 +1,7 @@
 class Debug {
   constructor() {
-    this.isLog = false;
-    this.isInfo = false;
+    this.isLog = true;
+    this.isInfo = true;
   }
 
   log(...args) {

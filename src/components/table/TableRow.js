@@ -17,7 +17,9 @@ function TableRow({ row, index }) {
 
   function handleClick() {
     addClick({
+      row,
       index,
+      dearTableConfig,
       dearTableData,
       setDearTableData,
       dearTableLayout,
@@ -25,24 +27,31 @@ function TableRow({ row, index }) {
   }
 
   return (
-    <tr className={row.click ? "clicked" : ""} onClick={handleClick}>
-      {dearTableConfig.columns.map((col) => {
-        const DearComponent = dearTableComponents[col.key];
-        const isOrdered = dearTableConfig.order?.[0]?.key == col.key;
+    <>
+      {row.dearDelete ? (
+        ""
+      ) : (
+        <tr className={row.click ? "clicked" : ""} onClick={handleClick}>
+          {dearTableConfig.columns.map((col) => {
+            const DearComponent = dearTableComponents[col.key];
+            const isOrdered = dearTableConfig.order?.[0]?.key == col.key;
 
-        return (
-          <td key={col.key} className={isOrdered ? "order" : ""}>
-            {!col.component && row[col.key]}
-            {col.component && DearComponent && (
-              <DearComponent
-                row={row}
-                dearComponentsProps={dearComponentsProps}
-              />
-            )}
-          </td>
-        );
-      })}
-    </tr>
+            return (
+              <td key={col.key} className={isOrdered ? "order" : ""}>
+                {!col.component && row[col.key]}
+                {col.component && DearComponent && (
+                  <DearComponent
+                    row={row}
+                    dearComponentsProps={dearComponentsProps}
+                  />
+                )}
+              </td>
+            );
+          })}
+        </tr>
+      )}
+    </>
   );
 }
+
 export default TableRow;

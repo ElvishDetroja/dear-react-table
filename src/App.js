@@ -31,7 +31,6 @@ function App() {
         key: "id",
         orderable: true,
         searchable: true,
-        primaryKey: true,
       },
       {
         name: "Email",

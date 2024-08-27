@@ -58,11 +58,14 @@ const defaultLayout = {
 };
 
 const defaultStyle = {
-  borderRadius: "5px",
-  maxHeightForScrollY: "300px",
+  darkTheme: false,
+  style: {
+    borderRadius: "5px",
+    maxHeightForScrollY: "300px",
+  },
 };
 
-const defaultStyleLight = {
+const preLightStyle = {
   parentBGColor: "white",
   fontColor: "#333",
 
@@ -98,7 +101,7 @@ const defaultStyleLight = {
   scrollbarHoverColor: "#817f7f",
 };
 
-const defaultStyleDark = {
+const preDarkStyle = {
   parentBGColor: "#212529",
   fontColor: "#dae0e7",
 
@@ -139,6 +142,6 @@ export {
   defaultData,
   defaultLayout,
   defaultStyle,
-  defaultStyleLight,
-  defaultStyleDark,
+  preLightStyle,
+  preDarkStyle,
 };

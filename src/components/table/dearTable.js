@@ -4,6 +4,7 @@ import TableBottom from "./TableBottom";
 import TableTop from "./TableTop";
 import TableMain from "./TableMain";
 import dearContext from "../../utils/context";
+import EventOrganizer from "../event/EventOrganizer";
 
 function DearTable() {
   //
@@ -28,6 +29,7 @@ function DearTable() {
           <TableMain />
         </div>
         <TableBottom />
+        <EventOrganizer />
       </div>
     </>
   );
