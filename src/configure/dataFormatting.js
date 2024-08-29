@@ -81,13 +81,11 @@ function processingLayout({ unprocessedLayout }) {
   //
   debug.info("dataFormatting: processingLayout run");
 
-  if (!unprocessedLayout) return defaultLayout;
-
   const layout = structuredClone(unprocessedLayout);
 
   const finalLayout = {};
-  const mergedDisplay = { ...defaultLayout.display, ...layout.display };
-  const mergedPosition = { ...defaultLayout.position, ...layout.position };
+  const mergedDisplay = { ...defaultLayout.display, ...layout?.display };
+  const mergedPosition = { ...defaultLayout.position, ...layout?.position };
   const componentTracker = new Map();
 
   Object.entries(defaultLayout.position).forEach(([position, component]) => {

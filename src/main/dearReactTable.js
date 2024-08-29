@@ -1,40 +1,35 @@
 import React, { useEffect, useMemo, useRef } from "react";
-import DearTable from "./components/table/dearTable";
+import DearTable from "../components/table/dearTable";
 import { useState } from "react";
-import { executeClientSideLogic } from "./utils/executeClientSideLogic";
-import debug from "./utils/debug";
-import useEffectAfterMount from "./hooks/useEffectAfterMount";
-import { formattingCombine } from "./configure/dataFormatting";
-import { newDataInDearTableData } from "./configure/dataOperation";
-import { request } from "./utils/request";
-import dearContext from "./utils/context";
+import { executeClientSideLogic } from "../utils/executeClientSideLogic";
+import debug from "../utils/debug";
+import useEffectAfterMount from "../hooks/useEffectAfterMount";
+import { formattingCombine } from "../configure/dataFormatting";
+import { newDataInDearTableData } from "../configure/dataOperation";
+import { request } from "../utils/request";
+import dearContext from "../utils/context";
 
 function DearReactTable({
-  dearTableConfig: tableConfig = {},
-  dearTableData: tableData = {},
-  dearTableLayout: tableLayout = {},
-  dearTableStyle: tableStyle = {},
+  dearTableConfig: tableConfig,
+  dearTableData: tableData,
+  dearTableLayout: tableLayout,
+  dearTableStyle: tableStyle,
   dearTableCallback,
-  dearTableComponents,
-  dearComponentsProps,
+  dearTableCustomComponents,
 }) {
   //
   debug.log("@@@@@@@@@@@@@@@@@");
 
-  const {
-    processedConfig,
-    frameworkData,
-    processedLayout,
-    processedStyle,
-  } = useMemo(() => {
-    debug.log("dearReactTable: useMemo run");
-    return formattingCombine({
-      unprocessedConfig: tableConfig,
-      unprocessedData: tableData,
-      unprocessedLayout: tableLayout,
-      unprocessedStyle: tableStyle,
-    });
-  }, []);
+  const { processedConfig, frameworkData, processedLayout, processedStyle } =
+    useMemo(() => {
+      debug.log("dearReactTable: useMemo run");
+      return formattingCombine({
+        unprocessedConfig: tableConfig,
+        unprocessedData: tableData,
+        unprocessedLayout: tableLayout,
+        unprocessedStyle: tableStyle,
+      });
+    }, []);
 
   const [dearTableConfig, setDearTableConfig] = useState(processedConfig);
   const [dearTableData, setDearTableData] = useState(frameworkData);
@@ -51,15 +46,14 @@ function DearReactTable({
 
   const contextValue = {
     dearTableConfig,
-    dearTableData,
     setDearTableConfig,
+    dearTableData,
     setDearTableData,
     dearTableCallback,
     dearTableLayout,
     dearTableStyle,
-    dearTableComponents,
-    dearComponentsProps,
     statusRef,
+    dearTableCustomComponents,
   };
 
   useEffectAfterMount(() => {

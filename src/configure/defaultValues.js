@@ -38,7 +38,6 @@ const defaultLayout = {
   table: {
     enableScrollX: true,
     enableScrollY: false,
-    maxHeightForScrollY: "400px",
     border: true,
   },
   tbody: {
@@ -61,7 +60,7 @@ const defaultStyle = {
   darkTheme: false,
   style: {
     borderRadius: "5px",
-    maxHeightForScrollY: "300px",
+    maxHeightForScrollY: "400px",
   },
 };
 

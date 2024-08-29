@@ -1,12 +1,12 @@
 function Button(data) {
-  const { row, dearComponentsProps } = data;
+  const { dearRow, dearComponentsProps } = data;
   const { dearTableData, setDearTableData } = dearComponentsProps;
 
   function handleClick(event) {
     //
     event.stopPropagation();
     const updatedStatus =
-      row.status === "unverified" ? "verified" : "unverified";
+      dearRow.status === "unverified" ? "verified" : "unverified";
 
     const rowIndex = dearTableData.data.findIndex((item) => item.id === row.id);
 

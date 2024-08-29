@@ -29,22 +29,24 @@ function Filter() {
 
   return (
     <>
-      <tr className="dear-table-filter">
-        {dearTableConfig.columns.map((column) => (
-          <th key={column.key}>
-            {column.filter && (
-              <div className="dear-table-header-filter">
-                {column.filter.type == "select" && (
-                  <FilterSelect column={column} handleChange={handleChange} />
-                )}
-                {column.filter.type == "text" && (
-                  <FilterText column={column} handleChange={handleChange} />
-                )}
-              </div>
-            )}
-          </th>
-        ))}
-      </tr>
+      {dearTableConfig.columns.filter((column) => column.filter).length > 0 && (
+        <tr className="dear-table-filter">
+          {dearTableConfig.columns.map((column) => (
+            <th key={column.key}>
+              {column.filter && (
+                <div className="dear-table-header-filter">
+                  {column.filter.type == "select" && (
+                    <FilterSelect column={column} handleChange={handleChange} />
+                  )}
+                  {column.filter.type == "text" && (
+                    <FilterText column={column} handleChange={handleChange} />
+                  )}
+                </div>
+              )}
+            </th>
+          ))}
+        </tr>
+      )}
     </>
   );
 }

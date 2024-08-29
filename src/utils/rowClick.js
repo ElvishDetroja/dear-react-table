@@ -1,6 +1,11 @@
 import debug from "./debug";
 
-function removeClick({ dearTableData, setDearTableData, dearTableLayout }) {
+function removeClick({
+  dearTableConfig,
+  dearTableData,
+  setDearTableData,
+  dearTableLayout,
+}) {
   //
   debug.log("removeClick run");
 
@@ -20,22 +25,27 @@ function removeClick({ dearTableData, setDearTableData, dearTableLayout }) {
       click: false,
     });
 
-    const updatedReservoir = [...dearTableData.reservoir];
-    const idx = updatedReservoir.findIndex((dat) => dat.dearId == dearId);
-    console.log(
-      "updatedReservoirupdatedReservoirupdatedReservoir",
-      updatedReservoir
-    );
-    console.log("DF", idx);
-    updatedReservoir[idx].click = false;
+    if (!dearTableConfig.serverSide) {
+      const updatedReservoir = [...dearTableData.reservoir];
+      const idx = updatedReservoir.findIndex((dat) => dat.dearId == dearId);
 
-    setDearTableData((pre) => {
-      return {
-        ...pre,
-        forebay: updatedForebay,
-        reservoir: updatedReservoir,
-      };
-    });
+      updatedReservoir[idx].click = false;
+
+      setDearTableData((pre) => {
+        return {
+          ...pre,
+          forebay: updatedForebay,
+          reservoir: updatedReservoir,
+        };
+      });
+    } else {
+      setDearTableData((pre) => {
+        return {
+          ...pre,
+          forebay: updatedForebay,
+        };
+      });
+    }
   }
 }
 

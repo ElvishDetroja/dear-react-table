@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import useClickOutside from "../../hooks/useClickOutside";
-import { removeClick } from "../../utils/rowClick";
 import TableCol from "./TableCol";
 import TableHeaderCell from "./TableHeaderCell";
 import Filter from "../filter/filter";
@@ -11,12 +9,11 @@ import dearContext from "../../utils/context";
 
 function TableMain() {
   //
-  const { dearTableConfig, dearTableData, setDearTableData, dearTableLayout } =
-    useContext(dearContext);
+  const contextValue = useContext(dearContext);
 
-  const tbodyBlock = useClickOutside(() =>
-    removeClick({ dearTableData, setDearTableData, dearTableLayout })
-  );
+  const { dearTableConfig, dearTableData, setDearTableData, dearTableLayout } =
+    contextValue;
+
 
   return (
     <table
@@ -42,7 +39,6 @@ function TableMain() {
         <Filter />
       </thead>
       <tbody
-        ref={tbodyBlock}
         className={`${dearTableLayout.tbody.enableRowHover ? "hover" : ""} ${
           dearTableLayout.tbody.borderX ? "border-x" : ""
         } ${dearTableLayout.tbody.borderY ? "border-y" : ""} ta-${
@@ -51,11 +47,7 @@ function TableMain() {
       >
         {dearTableData.forebay?.length > 0 &&
           dearTableData.forebay.map((row, rowIndex) => (
-            <TableRow
-              key={row.dearId ?? rowIndex}
-              row={row}
-              index={rowIndex}
-            />
+            <TableRow key={row.dearId ?? rowIndex} row={row} index={rowIndex} />
           ))}
       </tbody>
       <tfoot>

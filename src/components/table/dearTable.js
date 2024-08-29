@@ -5,11 +5,17 @@ import TableTop from "./TableTop";
 import TableMain from "./TableMain";
 import dearContext from "../../utils/context";
 import EventOrganizer from "../event/EventOrganizer";
+import useClickOutside from "../../hooks/useClickOutside";
+import { removeClick } from "../../utils/rowClick";
 
 function DearTable() {
   //
   debug.log("Table Run");
-  const { dearTableLayout, dearTableStyle } = useContext(dearContext);
+  const contextValue = useContext(dearContext);
+
+  const { dearTableLayout, dearTableStyle } = contextValue;
+
+  const tbodyBlock = useClickOutside(() => removeClick(contextValue));
 
   return (
     <>
@@ -18,6 +24,7 @@ function DearTable() {
           dearTableStyle.darkTheme ? "dark-theme" : ""
         }`}
         style={dearTableStyle.feedStock}
+        ref={tbodyBlock}
       >
         <TableTop />
         <div

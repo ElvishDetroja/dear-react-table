@@ -1,4 +1,4 @@
-import DearReactTable from "./dearReactTable";
+import DearReactTable from "./../index";
 import rowData from "./db";
 import { useState } from "react";
 import Button from "./Button";
@@ -126,8 +126,18 @@ function App() {
   }
 
   const dearTableLayout = {
-    display: {},
-    position: {},
+    display: {
+      search: true,
+      info: true,
+      length: true,
+      pagination: true,
+    },
+    position: {
+      topLeft: "length",
+      topRight: "search",
+      bottomLeft: "info",
+      bottomRight: "pagination",
+    },
     table: {
       enableScrollX: true,
       enableScrollY: false,
@@ -140,24 +150,66 @@ function App() {
       allowMultipleRowSelection: false,
       borderX: true,
       borderY: false,
+      textAlign: "left",
     },
     thead: {
       borderX: true,
       borderY: false,
+      borderYForFilter: false,
+      justifyContent: "space-between",
     },
   };
 
   const dearTableStyle = {
     darkTheme: false,
+    style: {
+      borderRadius: "5px",
+      maxHeightForScrollY: "400px",
+
+      parentBGColor: "white",
+      fontColor: "#333",
+
+      evenRowColor: "white",
+      oddRowColor: "#f9fafb",
+      rowHoverColor: "#e6e7e8",
+      rowBorderColor: "#d6d9e0",
+
+      selectedRowColor: "#0d6efd",
+      selectedRowHoverColor: "#0d6dfcd1",
+      selectedRowFontColor: "white",
+
+      arrowDefaultColor: "#dfdfdf",
+      arrowActiveColor: "#666666",
+
+      paginationActiveColor: "#e6e7e8",
+      paginationHoverColor: "#f9fafb",
+      paginationBorderColor: "#d6d9e0",
+
+      orderOddRowColor: "#f1f1f1",
+      orderEvenRowColor: "#fafafa",
+
+      columnTitleBGColor: "white",
+
+      searchAndLengthBGColor: "#f9fafb",
+      searchAndLengthBorderColor: "#e6e7e8",
+      searchAndLengthFocusBorderColor: "#0d6efd",
+
+      loadingPrimaryColor: "#0d6efd",
+      loadingSecondaryColor: "#e6e7e8",
+
+      scrollbarColor: "#c0b8b8",
+      scrollbarHoverColor: "#817f7f",
+    },
   };
 
-  const dearTableComponents = {
-    button: Button,
-  };
-
-  const dearComponentsProps = {
-    dearTableData,
-    setDearTableData,
+  const dearTableCustomComponents = {
+    components: {
+      button: Button,
+    },
+    componentsProps: {
+      dearTableData,
+      setDearTableData,
+    },
   };
 
   return (
@@ -169,8 +221,7 @@ function App() {
           dearTableCallback={dearTableCallback}
           dearTableLayout={dearTableLayout}
           dearTableStyle={dearTableStyle}
-          dearTableComponents={dearTableComponents}
-          dearComponentsProps={dearComponentsProps}
+          dearTableCustomComponents={dearTableCustomComponents}
         />
       </div>
     </>

@@ -10,9 +10,8 @@ function TableRow({ row, index }) {
     dearTableConfig,
     dearTableData,
     setDearTableData,
-    dearTableComponents,
-    dearComponentsProps,
     dearTableLayout,
+    dearTableCustomComponents
   } = useContext(dearContext);
 
   function handleClick() {
@@ -33,7 +32,7 @@ function TableRow({ row, index }) {
       ) : (
         <tr className={row.click ? "clicked" : ""} onClick={handleClick}>
           {dearTableConfig.columns.map((col) => {
-            const DearComponent = dearTableComponents[col.key];
+            const DearComponent = dearTableCustomComponents.components[col.key];
             const isOrdered = dearTableConfig.order?.[0]?.key == col.key;
 
             return (
@@ -41,8 +40,8 @@ function TableRow({ row, index }) {
                 {!col.component && row[col.key]}
                 {col.component && DearComponent && (
                   <DearComponent
-                    row={row}
-                    dearComponentsProps={dearComponentsProps}
+                    dearRow={row}
+                    dearComponentsProps={dearTableCustomComponents.componentsProps}
                   />
                 )}
               </td>
