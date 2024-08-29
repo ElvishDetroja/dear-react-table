@@ -136,6 +136,11 @@ const preDarkStyle = {
   scrollbarHoverColor: "#c0cedf",
 };
 
+const defaultComponents = {
+  components: {},
+  componentsProps: {},
+};
+
 export {
   defaultConfig,
   defaultData,
@@ -143,4 +148,5 @@ export {
   defaultStyle,
   preLightStyle,
   preDarkStyle,
+  defaultComponents,
 };

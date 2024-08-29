@@ -7,6 +7,7 @@ import {
   defaultStyle,
   preLightStyle,
   preDarkStyle,
+  defaultComponents,
 } from "./defaultValues";
 
 function processingConfig({ unprocessedConfig }) {
@@ -144,12 +145,21 @@ function processingStyle({ unprocessedStyle }) {
   return finalStyle;
 }
 
+function processingComponents({ unprocessedComponents }) {
+  if (!unprocessedComponents) {
+    return defaultComponents;
+  } else {
+    return unprocessedComponents;
+  }
+}
+
 function formattingCombine({
   unprocessedConfig,
   unprocessedData,
   existingData,
   unprocessedLayout,
   unprocessedStyle,
+  unprocessedComponents,
 }) {
   //
   debug.log("dataFormatting: formattingCombine Run");
@@ -158,7 +168,8 @@ function formattingCombine({
     processedData,
     frameworkData,
     processedLayout,
-    processedStyle;
+    processedStyle,
+    processedComponets;
 
   processedConfig = processingConfig({ unprocessedConfig });
 
@@ -176,11 +187,16 @@ function formattingCombine({
 
   processedStyle = processingStyle({ unprocessedStyle });
 
+  processedComponets = processingComponents({
+    unprocessedComponents,
+  });
+
   return {
     processedConfig,
     frameworkData,
     processedLayout,
     processedStyle,
+    processedComponets,
   };
 }
 

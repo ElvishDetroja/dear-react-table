@@ -20,21 +20,29 @@ function DearReactTable({
   //
   debug.log("@@@@@@@@@@@@@@@@@");
 
-  const { processedConfig, frameworkData, processedLayout, processedStyle } =
-    useMemo(() => {
-      debug.log("dearReactTable: useMemo run");
-      return formattingCombine({
-        unprocessedConfig: tableConfig,
-        unprocessedData: tableData,
-        unprocessedLayout: tableLayout,
-        unprocessedStyle: tableStyle,
-      });
-    }, []);
+  const {
+    processedConfig,
+    frameworkData,
+    processedLayout,
+    processedStyle,
+    processedComponets,
+  } = useMemo(() => {
+    debug.log("dearReactTable: useMemo run");
+    return formattingCombine({
+      unprocessedConfig: tableConfig,
+      unprocessedData: tableData,
+      unprocessedLayout: tableLayout,
+      unprocessedStyle: tableStyle,
+      unprocessedComponents: dearTableCustomComponents,
+    });
+  }, []);
 
   const [dearTableConfig, setDearTableConfig] = useState(processedConfig);
   const [dearTableData, setDearTableData] = useState(frameworkData);
   const [dearTableLayout, setDearTableLayout] = useState(processedLayout);
   const [dearTableStyle, setDearTableStyle] = useState(processedStyle);
+  const [dearTableComponents, setDearTableComponents] =
+    useState(processedComponets);
 
   const statusRef = useRef({ firstRender: true, dataUpdated: false });
 
@@ -53,7 +61,7 @@ function DearReactTable({
     dearTableLayout,
     dearTableStyle,
     statusRef,
-    dearTableCustomComponents,
+    dearTableComponents,
   };
 
   useEffectAfterMount(() => {
