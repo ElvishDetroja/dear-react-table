@@ -1,7 +1,12 @@
-import DearReactTable from "./main/dearReactTable";
-import { reload, updateDearTableData } from "./components/event/EventOrganizer";
-import "./main/dearReactTable.css";
-import "dear-react-table/dist/dear-react-table.css";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./execution/main/App";
+import { BrowserRouter } from "react-router-dom";
 
-export default DearReactTable;
-export { reload, updateDearTableData };
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);

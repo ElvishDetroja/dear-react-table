@@ -4,7 +4,7 @@ import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 
 export default {
-  input: "src/index.js",
+  input: "src/indexRollup.js",
   output: [
     {
       file: "dist/dear-react-table.esm.js",

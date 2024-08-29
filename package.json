@@ -1,6 +1,6 @@
 {
   "name": "dear-react-table",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Seamless Table Experience for Modern ReactJS Applications",
   "main": "/dist/dear-react-table.esm.js",
   "scripts": {
@@ -11,23 +11,15 @@
   },
   "author": "Elvish Detroja",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ElvishDetroja/dear-react-table"
+  },
   "peerDependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
     "react-scripts": "^5.0.1"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -48,5 +40,17 @@
     "datatable",
     "datagrid",
     "dear-react-table"
-  ]
+  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

@@ -8,6 +8,7 @@ import { formattingCombine } from "../configure/dataFormatting";
 import { newDataInDearTableData } from "../configure/dataOperation";
 import { request } from "../utils/request";
 import dearContext from "../utils/context";
+import "./dearReactTable.css";
 
 function DearReactTable({
   dearTableConfig: tableConfig,
