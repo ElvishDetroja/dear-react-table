@@ -630,3 +630,8 @@ Based on our experience, manual reloading of the table is typically unnecessary.
 reload();
 ```
 This will trigger a reload of the table data. Use this function only when absolutely needed, as frequent reloads may impact performance.
+
+if any bug is arrived then contact me at TheElvishDetroja@gmail.com with screenshot of error and explain lttle bit what you are trying to design. we will help you if you are not understand it correctly and if any issue with library we will solve it with in 24 hours.
+
+## Contact Us
+If you encounter a bug or issue with the library, please contact me at TheElvishDetroja@gmail.com. Include a screenshot of the error and a brief description of what you were trying to design. We will address and resolve the issue within 24 hours.

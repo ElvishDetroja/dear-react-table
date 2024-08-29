@@ -114,7 +114,16 @@ function processingLayout({ unprocessedLayout }) {
     };
   });
 
-  return { ...deepMerge(defaultLayout, layout), location: finalLayout };
+  const lastLayout = {
+    ...deepMerge(defaultLayout, layout),
+    location: finalLayout,
+  };
+
+  if (lastLayout.tbody.allowMultipleRowSelection) {
+    lastLayout.tbody.allowRowSelection = false;
+  }
+
+  return lastLayout;
 }
 
 function processingStyle({ unprocessedStyle }) {

@@ -51,6 +51,7 @@ function DearReactTable({
   debug.log("dearReactTable: statusRef", statusRef);
   debug.info("dearReactTable: dearTableLayout", dearTableLayout);
   debug.info("dearReactTable: dearTableStyle", dearTableStyle);
+  debug.info("dearReactTable: dearTableComponents", dearTableComponents);
 
   const contextValue = {
     dearTableConfig,
