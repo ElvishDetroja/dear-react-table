@@ -166,7 +166,7 @@ dearTableData object should follow this structure:
 }
 ```
 
-![table-preview](image1)
+![image-table-preview](https://github.com/user-attachments/assets/ab3847fb-e5ab-4c3c-9e08-4980a280e46a)
 
 #### Table Customization
 
@@ -294,7 +294,7 @@ The dearTableConfig object is sent every time the dearTableCallback function is 
 | columns[].searchable | Boolean | false             | Indicates if the column should be included in global searches.                                                                                                                                                                     |
 | columns[].filter     | Object  |                   | Defines the filtering options for the column. Can specify type (e.g., text, select) and options for select filters.                                                                                                                |
 
-![table-with-filter](image1)
+![image-table-with-filter](https://github.com/user-attachments/assets/684524bd-ef83-4879-b432-19779dcc7cfb)
 
 ## dearTableData
 
@@ -499,7 +499,7 @@ To customize the theme, you can pass the dearTableStyle prop with darkTheme: tru
 
 To switch between light and dark themes, or to adjust any of the parameters listed, pass the desired values in this object through the component props. Any parameters not specified will use the default values.
 
-![dark-theme-table](image1)
+![image-dark-theme-table](https://github.com/user-attachments/assets/663cd1a6-9efd-46d0-8bd5-65fe4678b5cb)
 
 ## dearTableCustomComponents
 
@@ -579,7 +579,7 @@ const dearTableCustomComponents = {
     />
 ```
 
-![custom-table](image1)
+![image-custom-table-component](https://github.com/user-attachments/assets/960e2fae-e6ac-4997-8d10-1b83d788cf5c)
 
 ## How to delete the row through custom component in table?
 
