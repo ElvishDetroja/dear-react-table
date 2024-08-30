@@ -1,0 +1,19 @@
+@ to make the library available to globally
+
+from library
+npm link "application/node_modules/react path"
+use relative path here
+
+from application
+npm link "dear-react-table package-name"
+
+
+
+@ to check the library is available in global mode
+npm list -g
+
+
+
+@ to remove the react and library from global npm registery
+sudo npm unlink -g dear-react-table
+sudo npm unlink -g react
