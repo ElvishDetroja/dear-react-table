@@ -67,7 +67,7 @@ function App() {
   }
   //
   const dearTableConfig = {
-    serverSide: false,
+    serverSide: true,
     start: 0,
     lengthOption: [10, 25, 50, 100],
     searchDebounceDelay: 1000,

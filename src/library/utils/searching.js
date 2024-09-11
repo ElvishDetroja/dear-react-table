@@ -1,11 +1,6 @@
 function searching({ dearTableConfig, dearTableData }) {
   //
-  if (!dearTableConfig.search?.value)
-    return {
-      ...dearTableData,
-      forebay: [...dearTableData.reservoir],
-      filteredRecords: dearTableData.reservoir.length,
-    };
+  if (!dearTableConfig.search?.value) return dearTableData;
 
   const searchableColumn = dearTableConfig.columns.filter(
     (col) => col.searchable == true

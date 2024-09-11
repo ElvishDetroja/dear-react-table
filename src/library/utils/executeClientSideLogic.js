@@ -3,6 +3,7 @@ import { pagingProcess } from "./paging";
 import debug from "./debug";
 import { searching } from "./searching";
 import { filtering } from "./filtering";
+import { deleting } from "./deleting";
 
 function executeClientSideLogic(contextValue) {
   //
@@ -18,7 +19,17 @@ function executeClientSideLogic(contextValue) {
   debug.log("executeClientSideLogic: dearTableConfig", dearTableConfig);
   debug.log("executeClientSideLogic: dearTableData", dearTableData);
 
-  const searchedTableData = searching({ dearTableConfig, dearTableData });
+  const removedDeletedTableData = deleting({ dearTableData });
+
+  debug.info(
+    "executeClientSideLogic: removedDeletedTableData",
+    removedDeletedTableData
+  );
+
+  const searchedTableData = searching({
+    dearTableConfig,
+    dearTableData: removedDeletedTableData,
+  });
   debug.info("executeClientSideLogic: searchedTableData", searchedTableData);
 
   const filteredTableData = filtering({
