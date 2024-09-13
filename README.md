@@ -16,7 +16,7 @@ dear-react-table is a customizable React library designed for creating dynamic t
 
 - Rich Feature Set: Like many other table libraries, dear-react-table offers search, filtering, and responsive design. However, it stands out with its out-of-the-box feature that allows developers to easily integrate custom components, such as buttons, inputs, and popups.
 
-- built in ❤️ with React
+- Built with ❤️ in React
 
 ## Documentation
 

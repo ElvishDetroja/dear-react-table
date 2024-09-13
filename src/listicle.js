@@ -3,3 +3,6 @@ import { reload, updateDearTableData } from "./library/components/event/EventOrg
 
 export default DearReactTable;
 export { reload, updateDearTableData };
+
+// Before updating the npm package, please ensure that debug mode is set to false.
+// do npm publish for update
