@@ -18,6 +18,10 @@ dear-react-table is a customizable React library designed for creating dynamic t
 
 - Built with ❤️ in React
 
+## CodeSandbox Demo
+
+Try out **dear-react-table** live on [CodeSandbox](https://codesandbox.io/p/sandbox/dear-react-table-c8lkxj). This interactive demo showcases the library's features and allows you to experiment with its functionality.
+
 ## Documentation
 
 ### Installation

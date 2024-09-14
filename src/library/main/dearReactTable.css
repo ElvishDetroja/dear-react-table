@@ -433,9 +433,6 @@
   padding: 2px;
 }
 
-.dear-table-filter select:focus {
-  border-color: var(--searchAndLengthFocusBorderColor);
-}
 
 /* @@@ */
 /* dark-theme */

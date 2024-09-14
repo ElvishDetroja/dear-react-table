@@ -165,6 +165,16 @@ function App() {
     },
   };
 
+  const dearTableStyle = {
+    darkTheme: true,
+  };
+
+  const dearTableLayout = {
+    tbody: {
+      allowMultipleRowSelection: true,
+    },
+  };
+
   return (
     <>
       <div className="my-table">
@@ -173,6 +183,8 @@ function App() {
           dearTableData={users}
           dearTableCallback={dearTableCallback}
           dearTableCustomComponents={dearTableCustomComponents}
+          dearTableStyle={dearTableStyle}
+          dearTableLayout={dearTableLayout}
         />
       </div>
     </>
