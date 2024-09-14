@@ -5,18 +5,11 @@ import { terser } from "rollup-plugin-terser";
 
 export default {
   input: "src/indexRollup.js",
-  output: [
-    {
-      file: "dist/dear-react-table.esm.js",
-      format: "esm",
-      sourcemap: true,
-    },
-    {
-      file: "dist/dear-react-table.cjs.js",
-      format: "cjs",
-      sourcemap: true,
-    },
-  ],
+  output: {
+    file: "dist/dear-react-table.esm.js",
+    format: "esm",
+    sourcemap: true,
+  },
   plugins: [
     postcss({
       extract: "dear-react-table.css",

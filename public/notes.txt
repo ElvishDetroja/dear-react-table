@@ -17,3 +17,17 @@ npm list -g
 @ to remove the react and library from global npm registery
 sudo npm unlink -g dear-react-table
 sudo npm unlink -g react
+
+
+
+
+
+
+
+Before updating the npm package
+
+please ensure that debug mode is set to false.
+there should be no dependencies in npm package.
+in listicle file, testing from node modules, should be commented.
+update the version in npm
+do npm publish for update npm package.

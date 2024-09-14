@@ -1,13 +1,8 @@
 {
   "name": "dear-react-table",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "Seamless Table Experience for Modern ReactJS Applications",
-  "main": "dist/dear-react-table.cjs.js",
-  "module": "dist/dear-react-table.esm.js",
-  "exports": {
-    "import": "./dist/dear-react-table.esm.js",
-    "require": "./dist/dear-react-table.cjs.js"
-  },
+  "main": "dist/dear-react-table.esm.js",
   "scripts": {
     "dev": "react-scripts start",
     "build": "react-scripts build",
