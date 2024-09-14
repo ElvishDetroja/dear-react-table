@@ -281,18 +281,21 @@ The dearTableCustomComponents object contains two properties. The first, compone
 
 The dearTableConfig object is sent every time the dearTableCallback function is invoked. This configuration object is used to fetch data from the backend based on the current table settings.
 
-| key                  | type    | default value     | description                                                                                                                                                                                                                        |
-| -------------------- | ------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| serverSide           | Boolean | true              | When serverSide is true, the dearTableCallback function is invoked every time a user changes a configuration (e.g., sorting, pagination). When false, the library handles everything internally without needing to fetch new data. |
-| start                | Number  | 0                 | Indicates the starting point of the data to be displayed, skipping rows before this index.                                                                                                                                         |
-| lengthOption         | Array   | [10, 25, 50, 100] | Defines the options for the number of rows to be displayed per page.                                                                                                                                                               |
-| searchDebounceDelay  | Number  | 1000              | The delay in milliseconds before executing the search after the user stops typing.                                                                                                                                                 |
-| columns              | Array   |                   | An array of column definitions that configure each column's behavior and appearance.                                                                                                                                               |
-| columns[].name       | String  |                   | The display name of the column.                                                                                                                                                                                                    |
-| columns[].key        | String  |                   | The unique key corresponding to the column's data field.                                                                                                                                                                           |
-| columns[].orderable  | Boolean | false             | Determines whether the column can be sorted.                                                                                                                                                                                       |
-| columns[].searchable | Boolean | false             | Indicates if the column should be included in global searches.                                                                                                                                                                     |
-| columns[].filter     | Object  |                   | Defines the filtering options for the column. Can specify type (e.g., text, select) and options for select filters.                                                                                                                |
+| key                        | type    | default value     | description                                                                                                                                                                                                                        |
+| -------------------------- | ------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| serverSide                 | Boolean | true              | When serverSide is true, the dearTableCallback function is invoked every time a user changes a configuration (e.g., sorting, pagination). When false, the library handles everything internally without needing to fetch new data. |
+| start                      | Number  | 0                 | Indicates the starting point of the data to be displayed, skipping rows before this index.                                                                                                                                         |
+| lengthOption               | Array   | [10, 25, 50, 100] | Defines the options for the number of rows to be displayed per page.                                                                                                                                                               |
+| searchDebounceDelay        | Number  | 1000              | The delay in milliseconds before executing the search after the user stops typing.                                                                                                                                                 |
+| columns                    | Array   |                   | An array of column definitions that configure each column's behavior and appearance.                                                                                                                                               |
+| columns[].name             | String  |                   | The display name of the column.                                                                                                                                                                                                    |
+| columns[].key              | String  |                   | The unique key corresponding to the column's data field.                                                                                                                                                                           |
+| columns[].orderable        | Boolean | false             | Determines whether the column can be sorted.                                                                                                                                                                                       |
+| columns[].searchable       | Boolean | false             | Indicates if the column should be included in global searches.                                                                                                                                                                     |
+| columns[].filter           | Object  |                   | Specifies an individual filter for the column.                                                                                                                                                                                     |
+| columns[].filter.type      | String  |                   | Specifies the filter type (e.g., "text", "select").                                                                                                                                                                                |
+| columns[].filter.condition | String  | "equalTo"         | If filter.type is "select", this property defines the condition used for filtering (e.g., "greaterThan", "lessThan").                                                                                                              |
+| columns[].filter.options   | Array   |                   | If filter.type is "select", this property provides the available filter options. It should be an array of objects, each containing a label and a value key.                                                                        |
 
 ![image-table-with-filter](https://github.com/user-attachments/assets/684524bd-ef83-4879-b432-19779dcc7cfb)
 
@@ -629,7 +632,9 @@ Based on our experience, manual reloading of the table is typically unnecessary.
 ```bash
 reload();
 ```
+
 This will trigger a reload of the table data. Use this function only when absolutely needed, as frequent reloads may impact performance.
 
 ## Contact Us
+
 If you encounter a bug or issue with the library, please contact me at TheElvishDetroja@gmail.com. Include a screenshot of the error and a brief description of what you were trying to design. We will address and resolve the issue within 24 hours.

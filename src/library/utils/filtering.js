@@ -18,7 +18,24 @@ function filtering({ dearTableConfig, dearTableData }) {
       }
 
       if (col.filter.type == "select") {
-        return cellValue == searchValue;
+        const condition = col.filter.condition ?? "equalTo";
+
+        let compare;
+
+        switch (condition) {
+          case "greaterThan":
+            compare = (cellValue, searchValue) => cellValue >= searchValue;
+            break;
+          case "lessThan":
+            compare = (cellValue, searchValue) => cellValue <= searchValue;
+            break;
+          case "equalTo":
+          default:
+            compare = (cellValue, searchValue) => cellValue == searchValue;
+            break;
+        }
+
+        return compare(cellValue, searchValue);
       }
 
       return true; // If there are other filter types, they pass by default
