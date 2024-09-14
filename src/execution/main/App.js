@@ -1,5 +1,4 @@
 import DearReactTable from "../../listicle.js";
-// import DearReactTable from "dear-react-table";
 import dbData from "../utils/db.js";
 import { useState } from "react";
 import ButtonUpdate from "../components/ButtonUpdate.js";

@@ -11,6 +11,11 @@ export default {
       format: "esm",
       sourcemap: true,
     },
+    {
+      file: "dist/dear-react-table.cjs.js",
+      format: "cjs",
+      sourcemap: true,
+    },
   ],
   plugins: [
     postcss({

@@ -32,7 +32,7 @@ function TableRow({ row, index }) {
       ) : (
         <tr className={row.click ? "clicked" : ""} onClick={handleClick}>
           {dearTableConfig.columns.map((col) => {
-            const DearComponent = dearTableComponents.components[col.key];
+            const DearComponent = dearTableComponents.components?.[col.key];
             const isOrdered = dearTableConfig.order?.[0]?.key == col.key;
 
             return (
